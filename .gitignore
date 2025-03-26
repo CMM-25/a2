@@ -1,0 +1,11 @@
+.idea/
+
+videos/
+csv/
+
+.venv/
+
+poetry.lock
+.python-version
+
+MUJOCO_LOG.TXT

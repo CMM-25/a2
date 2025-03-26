@@ -1,0 +1,126 @@
+<mujoco model="solo8">
+    <compiler angle="degree" coordinate="local"/>
+
+    <default>
+        <default class="solo8">
+            <geom friction="0.6" margin="0.001" condim="1"/>
+            <joint armature="0.01" damping="2.0" limited="false"/>
+            <default class="visual">
+                <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+            </default>
+            <default class="collision">
+                <geom group="3"/>
+            </default>
+        </default>
+    </default>
+
+    <asset>
+        <mesh name="solo_body" file="./mesh/solo_body.stl" />
+        <mesh name="solo_upper_leg_left_side" file="./mesh/solo_upper_leg_left_side.stl" />
+        <mesh name="solo_lower_leg_left_side" file="./mesh/solo_lower_leg_left_side.stl" />
+        <mesh name="solo_foot" file="./mesh/solo_foot.stl" />
+        <mesh name="solo_upper_leg_right_side" file="./mesh/solo_upper_leg_right_side.stl" />
+        <mesh name="solo_lower_leg_right_side" file="./mesh/solo_lower_leg_right_side.stl" />
+        <material name="grey" rgba="0.8 0.8 0.8 1.0"/>
+
+    </asset>
+    <worldbody>
+        <body name="solo_body" pos="0 0 0.26" childclass="solo8">
+            <geom type="mesh" material="grey" mesh="solo_body" class="visual"/>
+            <geom type="mesh" material="grey" mesh="solo_body" class="collision"/>
+            <inertial pos="0 0 0" quat="0 0 0 1" mass="1.43315091"
+                diaginertia="0.00578574 0.01938108 0.02476124"/>
+            <freejoint/>
+
+            <body name="FL_UPPER_LEG" pos="0.19 0.1046 0">
+                <inertial pos="0.00001377 0.01935853 -0.07870700" quat="0 0 0 1" mass="0.14853845" diaginertia="0.00041107 0.00041193 0.00003024" />
+                <joint name="FL_HFE" damping="2" pos="0 0 0" axis="0 1 0" range="0 40" type="hinge"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_left_side" class="visual"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_left_side" class="collision"/>
+
+                <body name="FL_LOWER_LEG" pos="0 0.037450000000000004 -0.16">
+                    <inertial pos="0.0 0.00787644 -0.08928215" quat="0 0 0 1" mass="0.03070001" diaginertia="0.00012024 0.00012029 0.00000216" />
+                    <joint name="FL_KFE" damping="2" pos="0 0 0" axis="0 1 0" range="-40 -10" type="hinge"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_left_side" class="visual"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_left_side" class="collision"/>
+
+                    <body name="FL_FOOT" pos="0 0.008 -0.16">
+                        <inertial pos="0 0 0.00035767" quat="0 0 0 1" mass="0.00693606" diaginertia="0.00000057 0.00000084 0.00000053"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="visual"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="collision"/>
+                    </body>
+                </body>
+            </body>  <!-- End FL Leg Segment -->
+
+            <body name="FR_UPPER_LEG" pos="0.19 -0.1046 0">
+                <inertial pos="-0.00001377 -0.01935853 -0.07870700" quat="0 0 0 1" mass="0.14853845" diaginertia="0.00041107 0.00041193 0.00003024" />
+                <joint name="FR_HFE" damping="2" pos="0 0 0" axis="0 1 0" range="0 40" type="hinge"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_right_side" class="visual"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_right_side" class="collision"/>
+
+                <body name="FR_LOWER_LEG" pos="0 -0.037450000000000004 -0.16">
+                    <inertial pos="0.0 0.00787644 -0.08928215" quat="0 0 0 1" mass="0.03070001" diaginertia="0.00012024 0.00012029 0.00000216" />
+                    <joint name="FR_KFE" damping="2" pos="0 0 0" axis="0 1 0" range="-40 -10" type="hinge"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_right_side" class="visual"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_right_side" class="collision"/>
+
+                    <body name="FR_FOOT" pos="0 -0.008 -0.16">
+                        <inertial pos="0 0 0.00035767" quat="0 0 0 1" mass="0.00693606" diaginertia="0.00000057 0.00000084 0.00000053"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="visual"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="collision"/>
+                    </body>
+                </body>
+            </body>  <!-- End FR Leg Segment -->
+
+            <body name="HL_UPPER_LEG" pos="-0.19 0.1046 0">
+                <inertial pos="0.00001377 0.01935853 -0.07870700" quat="0 0 0 1" mass="0.14853845" diaginertia="0.00041107 0.00041193 0.00003024" />
+                <joint name="HL_HFE" damping="2" pos="0 0 0" axis="0 1 0" range="0 40" type="hinge"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_left_side" class="visual"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_left_side" class="collision"/>
+
+                <body name="HL_LOWER_LEG" pos="0 0.037450000000000004 -0.16">
+                    <inertial pos="0.0 0.00787644 -0.08928215" quat="0 0 0 1" mass="0.03070001" diaginertia="0.00012024 0.00012029 0.00000216" />
+                    <joint name="HL_KFE" damping="2" pos="0 0 0" axis="0 1 0" range="-40 -10" type="hinge"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_left_side" class="visual"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_left_side" class="collision"/>
+
+                    <body name="HL_FOOT" pos="0 0.008 -0.16">
+                        <inertial pos="0 0 0.00035767" quat="0 0 0 1" mass="0.00693606" diaginertia="0.00000057 0.00000084 0.00000053"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="visual"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="collision"/>
+                    </body>
+                </body>
+            </body>  <!-- End HL Leg Segment -->
+
+            <body name="HR_UPPER_LEG" pos="-0.19 -0.1046 0">
+                <inertial pos="-0.00001377 -0.01935853 -0.07870700" quat="0 0 0 1" mass="0.14853845" diaginertia="0.00041107 0.00041193 0.00003024" />
+                <joint name="HR_HFE" damping="2" pos="0 0 0" axis="0 1 0" range="0 40" type="hinge"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_right_side" class="visual"/>
+                <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_upper_leg_right_side" class="collision"/>
+
+                <body name="HR_LOWER_LEG" pos="0 -0.037450000000000004 -0.16">
+                    <inertial pos="0.0 0.00787644 -0.08928215" quat="0 0 0 1" mass="0.03070001" diaginertia="0.00012024 0.00012029 0.00000216" />
+                    <joint name="HR_KFE" damping="2" pos="0 0 0" axis="0 1 0" range="-40 -10" type="hinge"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_right_side" class="visual"/>
+                    <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_lower_leg_right_side" class="collision"/>
+
+                    <body name="HR_FOOT" pos="0 -0.008 -0.16">
+                        <inertial pos="0 0 0.00035767" quat="0 0 0 1" mass="0.00693606" diaginertia="0.00000057 0.00000084 0.00000053"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="visual"/>
+                        <geom axisangle="0 1 0 0" type="mesh" material="grey" mesh="solo_foot" class="collision"/>
+                    </body>
+                </body>
+            </body>  <!-- End FR Leg Segment -->
+        </body>  <!-- End Entire Body  -->
+    </worldbody>
+    <actuator>
+        <motor name="FL_TOP" ctrllimited="false" ctrlrange="-1.0 1.0" joint="FL_HFE" gear="80 0 0 0 0 0"/>
+        <motor name="FL_BOT" ctrllimited="false" ctrlrange="-1.0 1.0" joint="FL_KFE" gear="50 0 0 0 0 0"/>
+        <motor name="FR_TOP" ctrllimited="false" ctrlrange="-1.0 1.0" joint="FR_HFE" gear="80 0 0 0 0 0"/>
+        <motor name="FR_BOT" ctrllimited="false" ctrlrange="-1.0 1.0" joint="FR_KFE" gear="50 0 0 0 0 0"/>
+        <motor name="HL_TOP" ctrllimited="false" ctrlrange="-1.0 1.0" joint="HL_HFE" gear="80 0 0 0 0 0"/>
+        <motor name="HL_BOT" ctrllimited="false" ctrlrange="-1.0 1.0" joint="HL_KFE" gear="50 0 0 0 0 0"/>
+        <motor name="HR_TOP" ctrllimited="false" ctrlrange="-1.0 1.0" joint="HR_HFE" gear="80 0 0 0 0 0"/>
+        <motor name="HR_BOT" ctrllimited="false" ctrlrange="-1.0 1.0" joint="HR_KFE" gear="50 0 0 0 0 0"/>
+    </actuator>
+</mujoco>
