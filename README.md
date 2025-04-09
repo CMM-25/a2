@@ -8,6 +8,21 @@ Before you submit your final commit, please make sure:
 1. Your code runs without any errors
 2. Leave your name, student ID, ETH email address and URL link to demo video in the `my-info.json` file.
 
+# Announcement
+ - April 9: Dear student, we find a minor typo in the README.md. The equation of kinematic constraints in Exercise 4 should include the absolute value operator, shown as below.
+
+    ![equation_7](./figures/equation_7_updated.svg)
+
+
+Please merge the changes to your branch by
+```bash
+# in project directory
+$ git remote add origin-start-code https://github.com/CMM-25/a2.git
+$ git pull origin-start-code main --rebase
+```
+and fix conflicts if there's any.
+
+
 # 1. Introduction
 
 In this assignment, we will implement a trajectory optimization algorithm for a simple quadruped robot. 
@@ -349,7 +364,7 @@ So your task is to fix this issue by adding another kinematic constraint to prev
 From the previous exercise, you should have already calculated the end-effector position in the shoulder frame $_{B^j}p^j$.
 With these quantities, the constraint will be given by the following equation. For each leg $j$:
 
-![equation_7](./figures/equation_7.svg)
+![equation_7](./figures/equation_7_updated.svg)
 
 where $l_{thigh}$ and $l_{calf}$ are the lengths of the thigh and calf segments of the leg, respectively.
 
